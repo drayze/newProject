@@ -5,7 +5,7 @@ function checkResponses {
         [string]$UserInput 
         )
             
-            $jsonObject = Get-Content -Path ".\Documents\WindowsPowerShell\my_Functions\newProject\smart_responses.json" -Raw | ConvertFrom-Json
+            $jsonObject = Get-Content -Path ".\Documents\WindowsPowerShell\my_Functions\checkResponses\smart_responses.json" -Raw | ConvertFrom-Json
             $data = $jsonObject
         do {
             
@@ -13,9 +13,9 @@ function checkResponses {
                 Write-Host "Go ahead say something original, Loser" -ForegroundColor Green
             }elseif(-not ($jsonObject -contains $UserInput)) {
                 Write-Host "That's so WEAK!  Try again and put some effort into it." -ForegroundColor Green
-                $data = [PSCustomObject]@{}
+                #$data = [PSCustomObject]@{}
                 $data += $UserInput | ConvertTo-Json 
-                Set-Content -Path ".\Documents\WindowsPowerShell\my_Functions\NewProject\new_smart_responses.json" -Value $data
+                Set-Content -Path ".\Documents\WindowsPowerShell\my_Functions\checkResponses\new_smart_responses.json" -Value $data
 
             } 
 
